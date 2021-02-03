@@ -1,11 +1,13 @@
 # Running the impakkt Proof of Authority Blockchain
 
 
-The following explains how to load and run the impakkt Ethereum Blockchain. and send a test transaction on the network.
 
-Make sure you use the package-list.txt included in the repo to create a new environment with the necessary packages installed. Open Terminal and run the following command:
+The following explains how to start and run the impakkt Ethereum Blockchain.
 
-        conda create -n myenv --file package-list.txt
+You can use the package-list.txt file included in the repository to create a new environment and install all the necessary packages using the following command in Terminal:
+
+    conda create -n myenv --file package-list.txt
+
 
 ---
 
@@ -38,19 +40,21 @@ Make sure you use the package-list.txt included in the repo to create a new envi
 
 ## **PUPPETH CONFIGURATION**
 
-![puppeth config](screenshots/puppeth-config-2.png)
-
 ![puppeth config](screenshots/puppeth-config-1.png)
 
-### 1. Make sure to install the packages from package-list.txt from above.
+![puppeth config](screenshots/puppeth-config-2.png)
 
-### 2. Run the following commands in Terminal to initialize the nodes
+### 1. Open Terminal.
+
+### 2. Run the following commands to initialize the nodes
 
         blockchain-tools/geth --datadir node1 init ./impakkt/impakkt.json
 
         blockchain-tools/geth --datadir node2 init ./impakkt/impakkt.json
 
-### 3. Run the following commands in Terminal to start the impakkt blockchain
+### 3. Run the following commands in separate Terminals to start the impakkt blockchain
+
+*Make sure you specify port 30304 for node2, as node1 will be using port 30303*
 
      blockchain-tools/geth --datadir node1 --unlock "a9CcfAa94C61ed2ffFe17b529fDB25e229A364F7" --mine --rpc --allow-insecure-unlock
 
@@ -64,7 +68,7 @@ Make sure you use the package-list.txt included in the repo to create a new envi
 
 ![change network](screenshots/change-network.png)
 
-### 2. Click "Add Custom Node", then add the custom network information that you set in the genesis. (Make sure that you scroll down to choose Custom in the "Network" column to reveal more options like Chain ID).
+### 2. Click "Add Custom Node" - You will need the custom network name and chain ID from above, and use ETH as the currency. *(Make sure that you scroll down to choose Custom in the "Network" column to reveal more options like Chain ID).*
 
 ![custom node](screenshots/custom-node.png)
 
@@ -76,6 +80,8 @@ Make sure you use the package-list.txt included in the repo to create a new envi
 
 ### 6. Finally, click Save & Use Custom Node.
 
+### 7. In the left hand column, make sure to choose impakkt as the new network.
+
 
 ![custom network](screenshots/custom-network.png)
 
@@ -83,9 +89,9 @@ Make sure you use the package-list.txt included in the repo to create a new envi
 
 ## **Send a test transaction**
 
-### 1. Use the MyCrypto GUI wallet to connect to the node with the exposed RPC port. You will need the custom network name and chain ID from above, and use ETH as the currency.
+### 1. Use the MyCrypto GUI wallet to connect to the node with the exposed RPC port. 
 
-### 2. Import the keystore file from the node1/keystore directory into MyCrypto. This will import the private key.
+### 2. Import the keystore file from the node1/keystore directory into MyCrypto. This will import the private key. For the password, use the password  for node1 from above.
 
 ![keystore_unlock](screenshots/keystore_unlock.gif)
 
